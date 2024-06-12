@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # medicine-最適なお薬受け取り方法
 =======
 # medicine-お薬受け取り場所のレビュー
+>>>>>>> origin/main
+=======
+# medicine-最適なお薬受け取り方法
 >>>>>>> origin/main
 ​
 ## サイト概要
