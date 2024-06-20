@@ -1,7 +1,7 @@
 <h2>プロフィール編集画面</h2>
 
 
-
+<%= form_with model: @user do |f| %>
   <div class="user-name">Nickname</div>
     <%= f.text_field :nickname %>
     
