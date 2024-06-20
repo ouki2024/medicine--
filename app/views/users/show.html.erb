@@ -1,2 +1,21 @@
 <h1>ここはマイページ</h1>
 <!--<p>Find me in app/views/users/show.html.erb</p>-->
+<table class="table">
+  
+  <thead>
+    <tr>
+      <%= image_tag current_user.get_profile_image(100,100) %>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <th>nickname</th>
+      <th><%= @user.nickname %></th>
+    </tr>
+  
+  </tbody>
+</table>
+  <% if @user == current_user %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
