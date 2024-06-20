@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  validates :nickname, uniqueness: true 
-  validates :nickname, presence: true, length: { minimum: 1, maximum: 20}, uniqueness: true
+  validates :nickname, presence: true, length: { minimum: 1, maximum: 20}, uniqueness: true 
+  validates :profile_image, presence: true
   
   
   has_one_attached :profile_image
@@ -17,6 +17,20 @@ class User < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
       profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+  
+  def guest_user?
+    email == GUEST_USER_EMAIL
   end
   
          

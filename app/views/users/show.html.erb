@@ -1,4 +1,5 @@
 <h1>ここはマイページ</h1>
+
 <!--<p>Find me in app/views/users/show.html.erb</p>-->
 <table class="table">
   
@@ -18,4 +19,11 @@
 </table>
   <% if @user == current_user %>
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+  
+  
+  <% unless @user.guest_user? %>
+  <div class="">
+    <%= link_to "",edit_user_path(@user) %>
+  </div>
   <% end %>

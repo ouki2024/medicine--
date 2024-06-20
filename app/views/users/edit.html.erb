@@ -1,5 +1,12 @@
 <h2>プロフィール編集画面</h2>
-
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with model: @user do |f| %>
   <div class="user-name">Nickname</div>
@@ -12,7 +19,7 @@
  
     
   <div class="upload">
-    <%= f.submit " Update User" %>
+    <%= f.submit " 変更を保存" %>
     
   </div>
 <% end %>

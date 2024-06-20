@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit]
   
   def show
     @user = current_user
@@ -18,9 +20,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update(user_params)
-     redirect_to user_path(current_user)
+      flash[:notice]="編集に成功しました！"
+      redirect_to user_path(current_user)
     else
-     render :edit   
+      flash.now[:alert] = "編集に失敗しました。"
+      render :edit   
     end
   end
   
@@ -30,5 +34,12 @@ class UsersController < ApplicationController
         
   params.require(:user).permit(:nickname, :profile_image, :introduction)  
   end
+  
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.guest_user?
+      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    end
+  end  
     
 end
