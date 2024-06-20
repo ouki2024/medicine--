@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   validates :nickname, presence: true, length: { minimum: 1, maximum: 20}, uniqueness: true 
-  validates :profile_image, presence: true
+ 
   
   
   has_one_attached :profile_image
@@ -25,7 +25,7 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = "guestuser"
+      user.nickname = "guestuser"
     end
   end
   

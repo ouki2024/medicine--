@@ -17,13 +17,11 @@
   
   </tbody>
 </table>
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+
   
   
   <% unless @user.guest_user? %>
-  <div class="">
-    <%= link_to "",edit_user_path(@user) %>
-  </div>
+  <!--<div class="">-->
+    <%= link_to "プロフィール編集",edit_user_path(@user) %>
+  <!--</div>-->
   <% end %>
