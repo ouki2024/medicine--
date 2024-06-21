@@ -9,17 +9,17 @@
 <% end %>
 
 <%= form_with model: @user do |f| %>
-  <div class="user-name">Nickname</div>
+  <div class="user-name">ニックネーム</div>
     <%= f.text_field :nickname %>
     
-  <div class="user-edit-image">Image</div>
+  <div class="user-edit-image">プロフィール画像</div>
     <%= f.file_field :profile_image, accept: "image/*" %>
    
     
  
     
   <div class="upload">
-    <%= f.submit " 変更を保存" %>
+    <%= f.submit " 保存" %>
     
   </div>
 <% end %>

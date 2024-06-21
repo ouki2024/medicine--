@@ -2,12 +2,13 @@ class CreateReviews < ActiveRecord::Migration[6.1]
   def change
     create_table :reviews do |t|
       
+      t.string :nickname
       t.string :gender
       t.string :hospital
       t.string :clinical_department
       t.string :pharmacy
       t.string :use_count
-      t.string :adress
+      t.string :address
       
       t.integer :age
       t.integer :visit_month

@@ -41,12 +41,13 @@ ActiveRecord::Schema.define(version: 2024_06_21_122306) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.string "nickname"
     t.string "gender"
     t.string "hospital"
     t.string "clinical_department"
     t.string "pharmacy"
     t.string "use_count"
-    t.string "adress"
+    t.string "address"
     t.integer "age"
     t.integer "visit_month"
     t.integer "cost"

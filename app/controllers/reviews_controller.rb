@@ -5,10 +5,16 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.user_id = current_user.id
-    @review.save
-    flash[:notice]="投稿に成功しました！"
-    redirect_to review_path
+    @review.id = current_user.id
+    
+    if  @review.save
+      flash[:notice]="投稿に成功しました！"
+      redirect_to review_path(@review)
+    else
+      @user = current_user
+      @review = Review.all
+      render :index
+    end
   end
 
   def index
@@ -32,7 +38,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:gender, :hospital, :clinical_department, :pharmacy, :use_count, :adress, :age, :visit_month, :cost, :content)
+    params.require(:review).permit(:nickname, :gender, :hospital, :clinical_department, :pharmacy, :use_count, :address, :age, :visit_month, :cost, :content)
   end
  
 end

@@ -1,2 +1,18 @@
-<h1>Reviews#new</h1>
+<h1>投稿フォーム</h1>
 <p>Find me in app/views/reviews/new.html.erb</p>
+
+
+<%= form_with model: @review do |f| %>
+    <h6>ニックネーム</h6>
+        <%= f.text_field :nickname %>
+    <h6>性別</h6>
+        <%= f.text_field :gender %>
+    <h6>年代</h6>
+        <%= f.text_field :age %>
+    <h6></h6>
+        
+        
+        
+        <%= f.submit '投稿' %>
+
+<% end %>
