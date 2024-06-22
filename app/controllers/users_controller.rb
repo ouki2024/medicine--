@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_guest_user, only: [:edit, :update]
+  before_action :ensure_guest_user, only: [:editupdate]
   
   def show
     @user = current_user
