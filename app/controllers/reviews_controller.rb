@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
       redirect_to review_path(@review)
     else
       @user = current_user
-      @review = Review.all
+      @reviews = Review.all
       render :index
     end
   end
