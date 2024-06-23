@@ -1,2 +1,21 @@
 <h1>Reviews#show</h1>
 <p>Find me in app/views/reviews/show.html.erb</p>
+
+<h1>投稿一覧</h1>
+<p>Find me in app/views/reviews/index.html.erb</p>
+
+    <% @reviews.each do |review| %>
+        <div>
+            <p>ユーザーネーム：<%= review.nickname %></p>
+            <p>性別：<%= review.gender %></p>
+            <p>年代：<%= review.age %></p>
+            <p>住所：<%= review.address %></p>
+            <p>病院：<%= review.hospital %></p>
+            <p>診療科：<%= review.clinical_department %></p>
+            <p>お薬受け取り場所：<%= review.pharmacy %></p>
+            <p>訪問回数：<%= review.use_count %></p>
+            <p>来訪月：<%= review.visit_month %></p>
+            <p>感想：<%= review.content %></p>
+        </div>
+
+    <% end %>

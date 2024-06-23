@@ -14,15 +14,18 @@ class ReviewsController < ApplicationController
       @user = current_user
       @reviews = Review.all
       render :index
+      
     end
   end
 
   def index
     @user = current_user
+    @review = Review.new
     @reviews = Review.all
   end
 
   def show
+     @review = Review.find(params[:id])
   end
 
   def edit
