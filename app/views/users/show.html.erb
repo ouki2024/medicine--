@@ -39,7 +39,12 @@
             <p>訪問回数：<%= review.use_count %></p>
             <p>来訪月：<%= review.visit_month %></p>
             <p>感想：<%= review.content %></p>
+            
         </div>
-        
-    
+         <!--#投稿削除-->
+        <% if review.user_id == current_user.id %>
+            <%= link_to '削除', review_path(review), method: :delete, data: {confirm: "本当に消しますか？"} %>
+        <% end %>
     <% end %>
+    
+  

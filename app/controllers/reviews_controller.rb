@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
       @user = current_user
       @reviews = Review.all
       flash[:alert] = @review.errors.full_messages.join(", ")
-      render :index
+      render :new
       
     end
   end
@@ -38,7 +38,11 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    
+    @review = Review.find(params[:id])
+    if @review.destroy
+      flash[:notice]="投稿を削除しました"
+      redirect_to mypage_path
+    end
   end
   
   # 投稿データのストロングパラメータ
