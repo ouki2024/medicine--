@@ -41,7 +41,7 @@
             <p>感想：<%= review.content %></p>
             
         </div>
-         <!--#投稿削除-->
+         <!--#投稿編集・削除-->
         <% if review.user_id == current_user.id %>
             <%= link_to '編集', edit_review_path(review) %>
             |

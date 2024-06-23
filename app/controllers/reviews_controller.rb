@@ -15,7 +15,6 @@ class ReviewsController < ApplicationController
       @reviews = Review.all
       flash[:alert] = @review.errors.full_messages.join(", ")
       render :new
-      
     end
   end
 
@@ -26,15 +25,30 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = current_user
-    
+    @newreview = Review.new
+    @review = Review.find(params[:id])
+     @user = @review.user
   end
 
   def edit
+    @review = Review.find(params[:id])
+    if @review.user == current_user
+      render :edit
+    else
+      redirect_to reviews_path
+    end
   end
   
   def update
+    @review = Review.find(params[:id])
+    @review.user_id = current_user.id
     
+    if @review.update(review_params)
+      flash[:notice]="更新に成功しました！"
+      redirect_to mypage_path
+    else 
+      render edit
+    end
   end
 
   def destroy
