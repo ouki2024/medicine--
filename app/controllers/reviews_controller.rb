@@ -5,14 +5,15 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.id = current_user.id
+    @review.user_id = current_user.id
     
     if  @review.save
       flash[:notice]="投稿に成功しました！"
-      redirect_to review_path(@review)
+      redirect_to mypage_path(@user)
     else
       @user = current_user
       @reviews = Review.all
+      flash[:alert] = @review.errors.full_messages.join(", ")
       render :index
       
     end
@@ -25,7 +26,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
-     @review = Review.find(params[:id])
+    @review = current_user
+    
   end
 
   def edit

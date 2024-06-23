@@ -2,6 +2,8 @@ class CreateReviews < ActiveRecord::Migration[6.1]
   def change
     create_table :reviews do |t|
       
+      t.references :user, foreign_key: true
+      
       t.string :nickname
       t.string :gender
       t.string :hospital
@@ -22,5 +24,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       
       t.timestamps
     end
+    
+   
   end
 end

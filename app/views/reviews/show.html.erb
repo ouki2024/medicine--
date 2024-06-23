@@ -4,7 +4,7 @@
 <h1>投稿一覧</h1>
 <p>Find me in app/views/reviews/index.html.erb</p>
 
-    <% @reviews.each do |review| %>
+    <% @reviews.each do |book| %>
         <div>
             <p>ユーザーネーム：<%= review.nickname %></p>
             <p>性別：<%= review.gender %></p>
@@ -17,5 +17,7 @@
             <p>来訪月：<%= review.visit_month %></p>
             <p>感想：<%= review.content %></p>
         </div>
-
+        
+    
     <% end %>
+    

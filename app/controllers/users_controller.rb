@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_guest_user, only: [:editupdate]
+  before_action :ensure_guest_user, only: [:edit, :update]
   
   def show
     @user = current_user
-  
+    @review = Review.new
+    @reviews = Review.where(user_id: @user.id)
   end
   
   def edit
