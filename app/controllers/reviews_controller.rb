@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     if @review.user == current_user
       render :edit
+      return
     else
       redirect_to reviews_path
     end
@@ -47,7 +48,8 @@ class ReviewsController < ApplicationController
       flash[:notice]="更新に成功しました！"
       redirect_to mypage_path
     else 
-      render edit
+      render :index
+      flash[:alert]="更新に失敗しました！"
     end
   end
 

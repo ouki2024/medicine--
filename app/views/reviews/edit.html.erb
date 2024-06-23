@@ -1,2 +1,70 @@
-<h1>Reviews#edit</h1>
+<h1>レビュー編集画面</h1>
 <p>Find me in app/views/reviews/edit.html.erb</p>
+
+
+<div class="row">
+    
+  <div class="col-md-offset-3 col-md-6">
+    
+      
+    <%= form_with model: @review do |f| %>
+    
+    <div class="form-gender row">
+        <%= f.label :性別 %>
+        <%= f.text_field :gender %>
+    </div>
+    <div class="form-age row">
+        <%= f.label :年代 %>
+        <%= f.text_field :age %>
+    </div>
+    
+    <div class="form-address row">
+        <%= f.label :住所 %>
+        <%= f.text_field :address %>
+    </div>
+    
+    <div class="form-hospital row">
+        <%= f.label :病院 %>
+        <%= f.text_field :hospital %>
+    </div>
+     
+    <div class="form-clinical_department row">
+        <%= f.label :診療科 %>
+        <%= f.text_field :clinical_department %>
+    </div>
+      
+    <div class="form-pharmacy row">
+        <%= f.label :お薬受け取り場所 %>
+        <%= f.text_field :pharmacy %>
+    </div>
+      
+    <div class="form-use_count row">
+        <%= f.label :利用回数 %>
+        <%= f.text_field :use_count %>
+    </div>
+
+    <div class="form-visit_month row">
+        <%= f.label :来訪月 %>
+        <%= f.text_field :visit_month %>
+    </div>
+
+    <div class="form-content row">
+  	    <%= f.label :感想 %>
+        <%= f.text_area :content %>
+    </div>
+
+    <div class="actions row">
+        <%= f.submit '更新'%>
+    </div>
+    <% end %>
+      
+      
+    <div class="menu">
+      <%= link_to "マイページ", mypage_path %>
+      |
+      <%= link_to "トップページ", root_path %>
+      
+    </div>
+    </div>
+  <div class="col-md-3"></div>
+</div>
