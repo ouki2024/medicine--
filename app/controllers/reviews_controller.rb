@@ -48,7 +48,7 @@ class ReviewsController < ApplicationController
       flash[:notice]="更新に成功しました！"
       redirect_to mypage_path
     else 
-      render :index
+      render :edit
       flash[:alert]="更新に失敗しました！"
     end
   end
