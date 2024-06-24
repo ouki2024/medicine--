@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     
     if  @review.save
       flash[:notice]="投稿に成功しました！"
-      redirect_to mypage_path(@user)
+      redirect_to reviews_path
     else
       @user = current_user
       @reviews = Review.all
