@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @review = Review.new
-    @books = Book.where(user_id: @user.id)
+    @reviews = Review.where(user_id: @user.id)
   end
   
   def edit

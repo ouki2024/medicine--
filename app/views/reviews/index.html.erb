@@ -1,28 +1,43 @@
-<h1>投稿一覧</h1>
+<h2>投稿一覧</h2>
 <!--<p>Find me in app/views/reviews/index.html.erb</p>-->
 
-
-
-    <% @reviews.each do |review| %>
-            <p>投稿ユーザー：<%= image_tag review.user.get_profile_image(100,100) %></p>
-            <p>ユーザーネーム：<%= review.nickname %></p>
-            <p>性別：<%= review.gender %></p>
-            <p>年代：<%= review.age %></p>
-            <p>住所：<%= review.address %></p>
-            <p>病院：<%= review.hospital %></p>
-            <p>診療科：<%= review.clinical_department %></p>
-            <p>お薬受け取り場所：<%= review.pharmacy %></p>
-            <p>訪問回数：<%= review.use_count %></p>
-            <p>来訪月：<%= review.visit_month %></p>
-            <p>感想：<%= review.content %></p>
-            
-        <!--#投稿削除-->
-        <% if review.user_id == current_user.id %>
-            <%= link_to '編集', edit_review_path(review) %>
-            |
-            <%= link_to '削除', review_path(review), method: :delete, data: {confirm: "本当に消しますか？"} %>
-        <% end %>
-    <% end %>
+    <table class ="table">
+        <thead>
+            <tr>
+                <th>投稿者</th>
+                <th>都道府県</th>
+                <th>病院</th>
+                <th>診療科</th>
+                <th>お薬受け取り場所</th>
+                <th>レビュー詳細</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @reviews.each do |review| %>
+       
+        
+            <tr>
+                <td>
+                <%= image_tag review.user.get_profile_image(100,100) %>
+                </td>
+                <td><%= review.address %></td>
+                <td><%= review.hospital %></td>
+                <td><%= review.clinical_department %></td>
+                <td><%= review.pharmacy %></td>
+        
+                <td>
+                <% if review.user_id == current_user.id %>
+                    <%= link_to '編集', edit_review_path(review) %>
+                    |
+                    <%= link_to '削除', review_path(review), method: :delete, data: {confirm: "本当に消しますか？"} %>
+                <% else %>
+                    <%= link_to 'レビュー詳細', review_path(review) %>
+                <% end %>
+                </td>
+            <% end %>
+            </tr>
+        </tbody>
+    </table>
     
     
   

@@ -1,52 +1,67 @@
-<h1>ここはマイページ</h1>
+
+<div class ="container">
+  <div class ="row">
+    <div class ="col-md-3">
+    <h2>マイページ</h2>
 
 <!--<p>Find me in app/views/users/show.html.erb</p>-->
-<table class="table">
+      <table class="table">
+        <thead>
+          <tr>
+            <%= image_tag current_user.get_profile_image(100,100) %>
+          </tr>
+        </thead>
   
-  <thead>
-    <tr>
-      <%= image_tag current_user.get_profile_image(100,100) %>
-    </tr>
-  </thead>
-  
-  <tbody>
-    <tr>
-      <th>nickname</th>
-      <th><%= @user.nickname %></th>
-    </tr>
-  
-  </tbody>
-</table>
-
-  
-  
-  <% unless @user.guest_user? %>
+        <tbody>
+          <tr>
+            <th>nickname</th>
+            <th><%= @user.nickname %></th>
+          </tr>
+        </tbody>
+      </table>
+      <% unless @user.guest_user? %>
   <!--<div class="">-->
-    <%= link_to "プロフィール編集",edit_user_path(@user) %>
+        <%= link_to "プロフィール編集",edit_user_path(@user) %>
   <!--</div>-->
-  <% end %>
+      <% end %>
+    </div>
+  
   
   <!--#自分の投稿内容を表示-->
-    <% @reviews.each do |review| %>
-        <div>
-            <p>ユーザーネーム：<%= review.nickname %></p>
-            <p>性別：<%= review.gender %></p>
-            <p>年代：<%= review.age %></p>
-            <p>住所：<%= review.address %></p>
-            <p>病院：<%= review.hospital %></p>
-            <p>診療科：<%= review.clinical_department %></p>
-            <p>お薬受け取り場所：<%= review.pharmacy %></p>
-            <p>訪問回数：<%= review.use_count %></p>
-            <p>来訪月：<%= review.visit_month %></p>
-            <p>感想：<%= review.content %></p>
-            
-        </div>
-         <!--#投稿編集・削除-->
-        <% if review.user_id == current_user.id %>
-            <%= link_to '編集', edit_review_path(review) %>
-            |
-            <%= link_to '削除', review_path(review), method: :delete, data: {confirm: "本当に消しますか？"} %>
-        <% end %>
-    <% end %>
-    
   
+    <div class ="col-md-9">
+      <table class ="table">
+        <thead>
+            <tr>
+                
+                <th>都道府県</th>
+                <th>病院</th>
+                <th>診療科</th>
+                <th>お薬受け取り場所</th>
+                <th></th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <% @reviews.each do |review| %>
+            <tr>
+                <td><%= review.address %></td>
+                <td><%= review.hospital %></td>
+                <td><%= review.clinical_department %></td>
+                <td><%= review.pharmacy %></td>
+                <td>
+                <% if review.user_id == current_user.id %>
+                    <%= link_to '編集', edit_review_path(review) %>
+                    |
+                    <%= link_to '削除', review_path(review), method: :delete, data: {confirm: "本当に消しますか？"} %>
+                <% end %>
+                |
+                <%= link_to 'レビュー詳細', review_path(review) %>
+                </td>
+            <% end %>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
