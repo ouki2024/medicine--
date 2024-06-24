@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @review = Review.new
-    @reviews = Review.where(user_id: @user.id)
+    @books = Book.where(user_id: @user.id)
   end
   
   def edit
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update(user_params)
-      flash[:notice]="編集に成功しました！"
+      flash[:notice]="プロフィールの編集に成功しました！"
       redirect_to user_path(current_user)
     else
       flash.now[:alert] = "編集に失敗しました。"

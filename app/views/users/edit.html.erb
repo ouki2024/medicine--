@@ -1,11 +1,14 @@
 <h2>プロフィール編集画面</h2>
+
 <% if @user.errors.any? %>
+<div class="error">
   <%= @user.errors.count %>件のエラーが発生しました
   <ul>
     <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+      <li class="error-message"><%= message %></li>
     <% end %>
   </ul>
+</div>
 <% end %>
 
 <%= form_with model: @user do |f| %>

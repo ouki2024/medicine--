@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     else
       @user = current_user
       @reviews = Review.all
-      flash[:alert] = @review.errors.full_messages.join(", ")
+      flash.now[:alert] = "投稿フォームをすべて入力してください"
       render :new
     end
   end
@@ -48,8 +48,8 @@ class ReviewsController < ApplicationController
       flash[:notice]="更新に成功しました！"
       redirect_to mypage_path
     else 
+      flash.now[:alert]="更新に失敗しました！"
       render :edit
-      flash[:alert]="更新に失敗しました！"
     end
   end
 
