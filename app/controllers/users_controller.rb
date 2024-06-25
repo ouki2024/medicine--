@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @review = Review.new
-    @reviews = Review.where(user_id: @user.id)
+    # @reviews = Review.where(user_id: @user.id)
+    @reviews = @user.reviews.page(params[:page])
   end
   
   def edit

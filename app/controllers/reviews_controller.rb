@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
   def index
     @user = current_user
     @review = Review.new
-    @reviews = Review.all
+    @reviews = Review.page(params[:page])
   end
 
   def show

@@ -14,7 +14,7 @@
   
         <tbody>
           <tr>
-            <th>nickname</th>
+            <th>nickname:</th>
             <th><%= @user.nickname %></th>
           </tr>
         </tbody>
@@ -59,6 +59,7 @@
                 <%= link_to 'レビュー詳細', review_path(review) %>
                 </td>
             <% end %>
+            <%= paginate @reviews %>
             </tr>
         </tbody>
       </table>
