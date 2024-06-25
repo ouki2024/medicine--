@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_21_122306) do
+ActiveRecord::Schema.define(version: 2024_06_25_124146) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2024_06_21_122306) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "review_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id_id", null: false
+    t.integer "review_id_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id_id"], name: "index_review_comments_on_review_id_id"
+    t.index ["user_id_id"], name: "index_review_comments_on_user_id_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -77,5 +87,7 @@ ActiveRecord::Schema.define(version: 2024_06_21_122306) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "review_comments", "review_ids"
+  add_foreign_key "review_comments", "user_ids"
   add_foreign_key "reviews", "users"
 end
