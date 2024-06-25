@@ -1,4 +1,10 @@
 class ReviewsController < ApplicationController
+  
+  def search
+    @review = Review.search(params[:keyword])
+    
+  end
+  
   def new
     @review = Review.new
   end

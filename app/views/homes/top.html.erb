@@ -1,6 +1,20 @@
-<h1>Topページ</h1>
+<h2>Medicine-あなたにあった最適なお薬の受け取り</h2>
+
+<% if user_signed_in? %>
+<!--#ログイン中＝検索画面-->
+    <%= form_with(url: search_reviews_path, local: true, method: :get, class: "search-form") do |form| %>
+        <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+        <%= form.submit "検索", class: "search-btn" %>
+    <% end %>
+   
+   
+   
 
 
+
+<% else %>
+<!--#ログアウト-->
     <div>
         <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post %>
     </div>
+<% end %>

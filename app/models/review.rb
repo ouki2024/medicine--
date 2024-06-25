@@ -27,4 +27,12 @@ class Review < ApplicationRecord
             profile_image.variant(resize_to_limit: [width, height]).processed
     end
     
+    def self.search(search)
+        if search != ""
+            Review.where('text LIKE(?)', "%#{search}%")
+        else
+            Review.all
+        end
+    end
+    
 end
