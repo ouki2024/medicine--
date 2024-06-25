@@ -5,7 +5,7 @@
 
     
         <div>
-            <p>ユーザーネーム：<%= @review.nickname %></p>
+            <p>ユーザー：<%= @review.nickname %></p>
             <p>性別：<%= @review.gender %></p>
             <p>年代：<%= @review.age %></p>
             <p>住所：<%= @review.address %></p>
@@ -27,5 +27,27 @@
         <% end %>
     
     
+        <div>
+            <p>コメント数：<%= @review.review_comments.count %></p>
+            <% @review.review_comments.each do |review_comment| %>
+                <p><%= image_tag review_comment.user.get_profile_image(100,100) %></p>
+                <%= review_comment.user.nickname %>
+                <!--#コメントした日-->
+                <!--<%= review_comment.created_at.strftime('%Y/%m/%d') %><br>-->
+                <%= review_comment.comment %>
+                
+                <% if review_comment.user == current_user %>
+                  <%= link_to "コメント削除", review_review_comment_path(review_comment.review, review_comment), method: :delete %>
+                <% end %>
+                
+            <% end %>
+        </div>
+        <!--#コメント欄-->
+        <div>
+            <%= form_with model: [@review, @review_comment] do |f| %>
+                <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+                <%= f.submit "送信する" %>
+            <% end %>
+        </div>
     
     

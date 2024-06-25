@@ -6,10 +6,10 @@
             <tr>
                 <th>投稿者</th>
                 <th>都道府県</th>
-                <th>病院</th>
-                <th>診療科</th>
+                <th>病院/診療科</th>
                 <th>お薬受け取り場所</th>
                 <th>レビュー詳細</th>
+                <th>コメント数</th>
             </tr>
         </thead>
         <tbody>
@@ -22,9 +22,11 @@
                 <%= review.nickname %>
                 </td>
                 <td><%= review.address %></td>
-                <td><%= review.hospital %></td>
-                <td><%= review.clinical_department %></td>
+                <td><%= review.hospital %>病院<br>
+                <%= review.clinical_department %>科
+                </td>
                 <td><%= review.pharmacy %></td>
+                
         
                 <td>
                 <% if review.user_id == current_user.id %>
@@ -35,6 +37,7 @@
                     <%= link_to 'レビュー詳細', review_path(review) %>
                 <% end %>
                 </td>
+                <td><%= review.review_comments.count %></td>
             <% end %>
             <%= paginate @reviews %>
             </tr>

@@ -35,9 +35,9 @@
             <tr>
                 
                 <th>都道府県</th>
-                <th>病院</th>
-                <th>診療科</th>
+                <th>病院/診療科</th>
                 <th>お薬受け取り場所</th>
+                <th>コメント数</th>
                 <th></th>
             </tr>
         </thead>
@@ -46,9 +46,13 @@
             <% @reviews.each do |review| %>
             <tr>
                 <td><%= review.address %></td>
-                <td><%= review.hospital %></td>
-                <td><%= review.clinical_department %></td>
+                <td><%= review.hospital %>病院<br>
+                <%= review.clinical_department %>科
+                </td>
                 <td><%= review.pharmacy %></td>
+                <td>
+                  <p><%= link_to "#{review.review_comments.count} コメント", review_path(review.id) %></p>
+                </td>
                 <td>
                 <% if review.user_id == current_user.id %>
                     <%= link_to '編集', edit_review_path(review) %>
