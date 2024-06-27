@@ -3,7 +3,8 @@
 
 <h1>投稿詳細</h1>
 
-    
+       
+
         <div>
             <p>ユーザー：<%= @review.nickname %></p>
             <p>性別：<%= @review.gender %></p>
@@ -15,6 +16,11 @@
             <p>訪問回数：<%= @review.use_count %>回</p>
             <p>来訪月：<%= @review.visit_month %>月</p>
             <p>感想：<%= @review.content %></p>
+            
+        <% @review.tags.each do |tag| %>
+            <%= tag.name %>
+        <% end %>
+            
         </div>
         <% if @review.user_id == current_user.id %>
             <%= link_to '編集', edit_review_path(@review) %>

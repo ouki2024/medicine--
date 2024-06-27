@@ -52,6 +52,9 @@
   	    <%= f.label :感想 %>
         <%= f.text_area :content %>
     </div>
+    
+    <%= f.text_field :tag_ids,value: @tag_list,\
+    placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
 
     <div class="actions row">
         <%= f.submit '更新'%>

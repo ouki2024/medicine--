@@ -10,8 +10,10 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    # @review = Review.new(review_params)
+    @review = Review.new(review_params)
     @review.user_id = current_user.id
+    # @review = current_user.reviews.build(review_params)
+    
     tag_list = params[:review][:tag_ids].split(',')
     
     if  @review.save
@@ -41,6 +43,8 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    @tag_list =@review.tags.pluck(:name).join(",")
+    
     if @review.user == current_user
       render :edit
       return
@@ -52,8 +56,10 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review.user_id = current_user.id
+    tag_list = params[:review][:tag_ids].split(',')
     
     if @review.update(review_params)
+      @review.save_tags(tag_list)
       flash[:notice]="更新に成功しました！"
       redirect_to mypage_path
     else 

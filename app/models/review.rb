@@ -3,7 +3,7 @@ class Review < ApplicationRecord
     belongs_to :user
     has_many :review_comments, dependent: :destroy
     has_many  :tag_relationships, dependent: :destroy
-        has_many  :tags, through: :tag_relationships
+    has_many  :tags, through: :tag_relationships
 
     
     has_one_attached :profile_image  
@@ -30,10 +30,30 @@ class Review < ApplicationRecord
             profile_image.variant(resize_to_limit: [width, height]).processed
     end
     
+    
     def save_tags(savereview_tags)
         savereview_tags.each do |new_name|
-        review_tag = Tag.find_or_create_by(name: new_name)
-        self.tags << review_tag
+            review_tag = Tag.find_or_create_by(name: new_name)
+            self.tags << review_tag
+        end
+    end
+    
+    def save_tags(savereview_tags)
+        #既存のタグを取得
+        current_tags = self.tags.pluck(:name) unless self.tags.nil?
+        #「old_tags」消すタグを取得
+        old_tags = current_tags - savereview_tags
+        #「new_tags」新たに追加するタグを取得
+        new_tags = savereview_tags - current_tags
+
+
+        old_tags.each do |old_name|
+            self.tags.delete Tag.find_by(name: old_name)
+        end
+        new_tags.each do |new_name|
+            review_tag = Tag.find_or_create_by(name: new_name)
+            self.tags << review_tag
+        end
     end
     
     # def self.search(search)
