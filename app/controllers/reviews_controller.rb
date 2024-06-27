@@ -31,6 +31,7 @@ class ReviewsController < ApplicationController
   def index
     @user = current_user
     @review = Review.new
+    @reviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).reviews : Review.all
     @reviews = Review.page(params[:page])
   end
 
@@ -80,7 +81,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:nickname, :gender, :hospital, :clinical_department, :pharmacy, :use_count, :address, :age, :visit_month, :cost, :content)
+    params.require(:review).permit(:nickname, :gender, :hospital, :clinical_department, :pharmacy, :use_count, :address, :age, :visit_month, :cost, :content, :tag_id)
   end
  
 end

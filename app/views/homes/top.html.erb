@@ -7,7 +7,16 @@
 <!--        <%= form.submit "検索", class: "search-btn" %>-->
 <!--    <% end %>-->
 
-    
+    <%= form_with url: root_path, method: :get, class: '自由に' do %>
+        <%= select_tag :tag_id,
+            options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+            {
+            prompt: 'タグで絞り込み',
+            class: '自由に',
+            onchange: 'submit(this.form);'
+            }%>
+    <% end %>
+   
     
    
 
