@@ -1,19 +1,21 @@
 class ReviewsController < ApplicationController
   
-  def search
-    @review = Review.search(params[:keyword])
+  # def search
+  #   @review = Review.search(params[:keyword])
     
-  end
+  # end
   
   def new
     @review = Review.new
   end
 
   def create
-    @review = Review.new(review_params)
+    # @review = Review.new(review_params)
     @review.user_id = current_user.id
+    tag_list = params[:review][:tag_ids].split(',')
     
     if  @review.save
+      @review.save_tags(tag_list)
       flash[:notice]="投稿に成功しました！"
       redirect_to reviews_path
     else

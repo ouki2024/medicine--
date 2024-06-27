@@ -11,11 +11,9 @@
         <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
         placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
         
-        <% review.tags.each do |tag| %>
-        <%= tag.name %>
-<% end %>
-        
+       
     <% end %>
+
     
    
 

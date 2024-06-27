@@ -30,6 +30,12 @@ class Review < ApplicationRecord
             profile_image.variant(resize_to_limit: [width, height]).processed
     end
     
+    def save_tags(savereview_tags)
+        savereview_tags.each do |new_name|
+        review_tag = Tag.find_or_create_by(name: new_name)
+        self.tags << review_tag
+    end
+    
     # def self.search(search)
     #     if search != ""
     #         Review.where('text LIKE(?)', "%#{search}%")
