@@ -35,8 +35,13 @@ class ReviewsController < ApplicationController
     
     if params[:tag_id].present?
       @reviews = Tag.find(params[:tag_id]).reviews
+      
     elsif params[:keyword].present?
       # キーワード検索処理
+      @review = Review.search(search_params[:keyword])
+      # Review.where('pharmacy LIKE(?) or hospital LIKE(?)', "%#{keyword}%", "%#{keyword}%")
+      @reviews = Review.search(@keyword)
+      
     else
       @reviews = Review.all
     end
@@ -91,6 +96,11 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:nickname, :gender, :hospital, :clinical_department, :pharmacy, :use_count, :address, :age, :visit_month, :cost, :content, :tag_ids=> [])
+  end
+  
+  def search_params
+    @keyword = params[:keyword]
+    params.permit(:keyword)
   end
  
 end

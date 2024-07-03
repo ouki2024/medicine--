@@ -11,6 +11,18 @@
             }%>
     <% end %>
     
+    <%= form_tag({controller:"reviews",action:"index"}, method: :get) do %>
+
+        <%= text_field_tag :keyword %>
+
+        <%= submit_tag '検索する' %>
+
+    <% end %>
+    
+    <% if @keyword.present? %>
+      <%= "#{@keyword}の検索結果" %>
+    <% end %>
+    
 
     <table class ="table">
         <thead>

@@ -56,12 +56,20 @@ class Review < ApplicationRecord
         end
     end
     
-    # def self.search(search)
+    # def self.search(keyword)
     #     if search != ""
-    #         Review.where('pharmacy LIKE(?) or hospital LIKE(?)', "%#{search}%",  "%#{search}%")
+    #         Review.where('pharmacy LIKE(?) or hospital LIKE(?)', "%#{keyword}%",  "%#{keyword}%")
     #     else
     #         Review.all
     #     end
     # end
+    
+    def self.search(keyword)
+        if keyword.present?
+            where('address LIKE(?) or clinical_department LIKE(?) or pharmacy LIKE(?) or hospital LIKE(?)', "#{keyword}%", "%#{keyword}%", "#{keyword}%", "#{keyword}%")
+        else
+            Review.all
+        end
+    end
     
 end

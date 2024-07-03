@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :reviews do
     resources :review_comments, only: [:create, :destroy]
     collection do
-      get '/search', to: 'reviews#search'
+      get '/search', to: 'reviews#index'
     end
     
   end
