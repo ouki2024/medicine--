@@ -9,3 +9,8 @@ Admin.create!(
    email: 'admin@admin',
    password: 'password'
 )
+
+# Admin.create!(
+#    nickname: 'admin',
+#    password: 'password'
+# )
