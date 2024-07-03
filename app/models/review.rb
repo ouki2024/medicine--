@@ -3,7 +3,7 @@ class Review < ApplicationRecord
     belongs_to :user
     has_many :review_comments, dependent: :destroy
     has_many  :tag_relationships, dependent: :destroy
-    has_many  :tags, through: :tag_relationships
+    has_many  :tags, through: :tag_relationships, dependent: :destroy
 
     
     has_one_attached :profile_image  
