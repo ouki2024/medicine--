@@ -10,9 +10,9 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
-    @review.user_id = current_user.id
-    # @review = current_user.reviews.build(review_params)
+    # @review = Review.new(review_params)
+    # @review.user_id = current_user.id
+    @review = current_user.reviews.build(review_params)
     
     tag_list = params[:review][:tag_ids].split(',')
     
@@ -31,8 +31,17 @@ class ReviewsController < ApplicationController
   def index
     @user = current_user
     @review = Review.new
-    @reviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).reviews : Review.all
-    @reviews = Review.page(params[:page])
+    #@reviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).reviews : Review.all
+    
+    if params[:tag_id].present?
+      @reviews = Tag.find(params[:tag_id]).reviews
+    elsif params[:keyword].present?
+      # キーワード検索処理
+    else
+      @reviews = Review.all
+    end
+    
+    @reviews = @reviews.page(params[:page])
   end
 
   def show

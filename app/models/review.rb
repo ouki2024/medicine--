@@ -58,7 +58,7 @@ class Review < ApplicationRecord
     
     # def self.search(search)
     #     if search != ""
-    #         Review.where('text LIKE(?)', "%#{search}%")
+    #         Review.where('pharmacy LIKE(?) or hospital LIKE(?)', "%#{search}%",  "%#{search}%")
     #     else
     #         Review.all
     #     end
