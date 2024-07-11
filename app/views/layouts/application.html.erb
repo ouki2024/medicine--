@@ -22,7 +22,7 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          
+
           <div class=“collapse navbar-collapse” id=“Dropdown”>
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
@@ -30,7 +30,7 @@
                     <%= link_to '投稿一覧', reviews_path, class: 'nav-link text-light' %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-light' %>  
+                    <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-light' %>
                   </li>
                   <li class="nav-item">
                     <%= link_to '投稿フォーム', new_review_path, class: 'nav-link text-light' %>
@@ -38,7 +38,11 @@
                   <li class="nav-item">
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
                   </li>
-        
+              <% elsif %>
+                  <li>
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+                  </li>
+              <% elsif %>
               <% else %>
                   <li class="nav-item">
                     <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-light' %>
@@ -55,9 +59,9 @@
       <% flash.each do |message_type, message| %>
        <div class="flash-message <%= message_type %>"><%= message %></div>
       <% end %>
-      
+
     </main>
-    
+
     <%= yield %>
     <!--<footer class="bg-dark text-white">-->
     <!--  <div class ="container mt-5">-->
