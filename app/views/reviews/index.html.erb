@@ -10,7 +10,7 @@
             onchange: 'submit(this.form);'
             }%>
     <% end %>
-    
+
     <%= form_tag({controller:"reviews",action:"index"}, method: :get) do %>
 
         <%= text_field_tag :keyword %>
@@ -18,11 +18,11 @@
         <%= submit_tag '検索する' %>
 
     <% end %>
-    
+
     <% if @keyword.present? %>
       <%= "#{@keyword}の検索結果" %>
     <% end %>
-    
+
 
     <table class ="table">
         <thead>
@@ -37,8 +37,8 @@
         </thead>
         <tbody>
             <% @reviews.each do |review| %>
-       
-        
+
+
             <tr>
                 <td>
                 <%= image_tag review.user.get_profile_image(100,100) %><br>
@@ -49,8 +49,8 @@
                 <%= review.clinical_department %>科
                 </td>
                 <td><%= review.pharmacy %></td>
-                
-        
+
+
                 <td>
                 <% if review.user_id == current_user.id %>
                     <%= link_to '編集', edit_review_path(review) %>
@@ -66,6 +66,5 @@
             </tr>
         </tbody>
     </table>
-    
-    
-  
+
+

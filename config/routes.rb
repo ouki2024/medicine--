@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+#管理者
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: 'admin/sessions'
   }
@@ -10,21 +10,24 @@ Rails.application.routes.draw do
   end
 
 
-  devise_for :users
-  root to:'homes#top'
+ #会員
+  scope module: :public do
+    devise_for :users
+    root to:'homes#top'
   # get '/about' => 'homes#about'
 
-  get '/mypage' => 'users#show'
-  resources :users, only: [:show, :edit, :update]
+    get '/mypage' => 'users#show'
+    resources :users, only: [:show, :edit, :update]
 
-  devise_scope :user do
-    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
-  end
+    devise_scope :user do
+      post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+    end
 
-  resources :reviews do
-    resources :review_comments, only: [:create, :destroy]
-    collection do
-      get '/search', to: 'reviews#index'
+    resources :reviews do
+      resources :review_comments, only: [:create, :destroy]
+      collection do
+        get '/search', to: 'reviews#index'
+      end
     end
 
   end

@@ -1,5 +1,5 @@
-class ReviewCommentsController < ApplicationController
-    
+class Public::ReviewCommentsController < ApplicationController
+
     def create
         review = Review.find(params[:review_id])
         # @review.user_id = current_user.id
@@ -12,11 +12,11 @@ class ReviewCommentsController < ApplicationController
         ReviewComment.find(params[:id]).destroy
         redirect_to review_path(params[:review_id])
     end
-    
+
     private
 
     def review_comment_params
         params.require(:review_comment).permit(:comment)
     end
-    
+
 end
