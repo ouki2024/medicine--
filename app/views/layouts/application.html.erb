@@ -50,17 +50,11 @@
                   </li>
               <% end %>
 
-              <% if admin_signed_in? %>
-                  <div class="nav-item">
-                    <%= link_to '会員一覧', admin_users_path, class: 'nav-link text-light' %>
-                  </div>
-                  <div class="nav-item">
-                    <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
-                  </div>
-              <% end %>
+
             </ul>
           </div>
         </div>
+      </nav>
     </header>
     <main>
       <% flash.each do |message_type, message| %>
