@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
 
  #会員
+
+
   scope module: :public do
     devise_for :users
     root to:'homes#top'
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
 
     devise_scope :user do
-      post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+      post "users/guest_sign_in", to: "user_sessions#guest_sign_in"
     end
 
     resources :reviews do
@@ -29,9 +31,6 @@ Rails.application.routes.draw do
         get '/search', to: 'reviews#index'
       end
     end
-
-
-
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

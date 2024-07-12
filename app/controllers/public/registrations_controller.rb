@@ -13,7 +13,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def create
   #   super
   # end
-
+  def create
+    super do |resource|
+      resource.email = params[:user][:email]
+      resource.save if resource.email.present?
+    end
+  end
   # GET /resource/edit
   # def edit
   #   super
