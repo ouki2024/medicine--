@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+    <h2>投稿一覧</h2>
+<!--<p>Find me in app/views/reviews/index.html.erb</p>-->
+
+    <%= form_with url: reviews_path, method: :get, class: '自由に' do %>
+        <%= select_tag :tag_id,
+            options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+            {
+            prompt: 'タグで絞り込み',
+            class: '自由に',
+            onchange: 'submit(this.form);'
+            }%>
+    <% end %>
+
+    <%= form_tag({controller:"reviews",action:"index"}, method: :get) do %>
+
+        <%= text_field_tag :keyword %>
+
+        <%= submit_tag '検索する' %>
+
+    <% end %>
+
+    <% if @keyword.present? %>
+      <%= "#{@keyword}の検索結果" %>
+    <% end %>
+
+
+    <table class ="table">
+        <thead>
+            <tr>
+                <th>投稿者</th>
+                <th>都道府県</th>
+                <th>病院/診療科</th>
+                <th>お薬受け取り場所</th>
+                <th>レビュー詳細</th>
+                <th>コメント数</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @reviews.each do |review| %>
+
+
+            <tr>
+                <td>
+                <%= image_tag review.user.get_profile_image(100,100) %><br>
+                <%= review.nickname %>
+                </td>
+                <td><%= review.address %></td>
+                <td><%= review.hospital %>病院<br>
+                <%= review.clinical_department %>科
+                </td>
+                <td><%= review.pharmacy %></td>
+
+
+                <td>
+                <% if review.user_id == current_user.id %>
+                    <%= link_to '編集', edit_review_path(review) %>
+                    |
+                    <%= link_to '削除', review_path(review), method: :delete, data: {confirm: "本当に消しますか？"} %>
+                <% else %>
+                    <%= link_to 'レビュー詳細', review_path(review) %>
+                <% end %>
+                </td>
+                <td><%= review.review_comments.count %></td>
+            <% end %>
+            <%= paginate @reviews %>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>

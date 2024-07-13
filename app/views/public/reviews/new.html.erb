@@ -1,3 +1,4 @@
+
 <h1>投稿フォーム</h1>
 <!--<p>Find me in app/views/reviews/new.html.erb</p>-->
 
@@ -46,12 +47,12 @@
         <%= f.text_area :content %>
     </div>
 
-    <%= form_with model:@review, local: true do |f| %>
+
 
         <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
         placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
 
-    <% end %>
+
 
     <div class="actions row">
         <%= f.submit '投稿' %>

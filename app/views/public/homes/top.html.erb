@@ -2,6 +2,8 @@
 
 <body>
 <% if user_signed_in? %>
+<h2>Medicine-あなたにあった最適なお薬の受け取り方</h2>
+
 <% else %>
     <main>
         <div class = "container">
@@ -10,23 +12,27 @@
                     <h2>Medicine-あなたにあった最適なお薬の受け取り方</h2>
 
                     <div class ="row">
+                        <p>ログインをお願いします</p>
                         <%= link_to new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3" do %>
-                        ログイン
+                            ログイン
                         <% end %>
                     </div>
                     <div class ="row">
+                        <p>新規ご利用の方はこちら</p>
                         <%= link_to new_user_registration_path, class: "btn btn-success btn-sm btn-block" do %>
-                        会員登録
+                            会員登録
                         <% end %>
                     </div>
                     <div class ="row">
-                        <%= link_to  users_guest_sign_in_path, class: "btn btn-warning btn-sm btn-block" do %>
-                        ゲストログイン（閲覧用）
+                        <p>ゲストログインはこちら</p>
+                        <%= link_to  users_guest_sign_in_path, class: "btn btn-warning btn-sm btn-block", method: :post do %>
+                            ゲストログイン（閲覧用）
                         <% end %>
                     </div>
                     <div class ="row">
+                        <p>管理者の方はこちら</p>
                         <%= link_to  new_admin_session_path, class: "btn btn-secondary btn-sm btn-block" do %>
-                        管理者ログイン
+                            管理者ログイン
                         <% end %>
                     </div>
 
@@ -34,5 +40,8 @@
         </div>
       </div>
     </main>
+
 <% end %>
+
+
 </body>
