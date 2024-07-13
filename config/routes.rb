@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'users', to: 'users#index'
-    resources :users, only: [:index, :destroy]
+    resources :users, only: [:index, :show, :edit, :destroy]
   end
 
 

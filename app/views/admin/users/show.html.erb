@@ -1,0 +1,63 @@
+
+<div class="container">
+  <div class="row">
+
+    <div class ="col-md-4">
+    <h2>会員詳細ページ</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <%= image_tag @user.get_profile_image(70,70) %>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>nickname</th>
+            <td><%= @user.nickname %></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class ="col-md-8">
+      <table class ="table">
+        <thead>
+            <tr>
+
+                <th>都道府県</th>
+                <th>病院/診療科</th>
+                <th>お薬受け取り場所</th>
+                <th>コメント数</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @reviews.each do |review| %>
+            <tr>
+                <td><%= review.address %></td>
+                <td><%= review.hospital %>病院<br>
+                <%= review.clinical_department %>科
+                </td>
+                <td><%= review.pharmacy %></td>
+                <td>
+                  <p><%= "#{review.review_comments.count} コメント" %></p>
+                </td>
+                <td>
+
+                  <%= link_to '編集', edit_review_path(review) %>
+                    |
+                  <%= link_to '削除', review_path(review), method: :delete, data: {confirm: "本当に消しますか？"} %>
+
+                    |
+                  <%= link_to 'レビュー詳細', review_path(review) %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

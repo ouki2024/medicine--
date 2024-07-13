@@ -11,12 +11,13 @@
             <%= image_tag current_user.get_profile_image(100,100) %>
           </tr>
         </thead>
-  
+
         <tbody>
           <tr>
-            <th>nickname:</th>
-            <th><%= @user.nickname %></th>
+            <th>nickname</th>
+            <td><%= @user.nickname %></td>
           </tr>
+
         </tbody>
       </table>
       <% unless @user.guest_user? %>
@@ -25,15 +26,15 @@
   <!--</div>-->
       <% end %>
     </div>
-  
-  
+
+
   <!--#自分の投稿内容を表示-->
-  
+
     <div class ="col-md-9">
       <table class ="table">
         <thead>
             <tr>
-                
+
                 <th>都道府県</th>
                 <th>病院/診療科</th>
                 <th>お薬受け取り場所</th>
@@ -41,7 +42,7 @@
                 <th></th>
             </tr>
         </thead>
-        
+
         <tbody>
             <% @reviews.each do |review| %>
             <tr>

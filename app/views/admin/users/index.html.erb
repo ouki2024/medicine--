@@ -10,17 +10,24 @@
           <th>会員ID</th>
           <th>氏名</th>
           <th>メールアドレス</th>
-          <th>ステータス</th>
+          <th>リンク先</th>
+          <th></th>
         </tr>
       </thead>
         <% @users.each do |user| %>
           <tr>
             <td><%= user.id %></td>
-            <td><%= user.nickname %></td>
+            <td>
+              <%= image_tag user.get_profile_image(70,70) %><br>
+              <%= user.nickname %>
+            </td>
             <td><%= user.email %></td>
+            <td><%= link_to '会員詳細ページへ', admin_user_path(user) %></td>
             <td><%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
           </tr>
         <% end %>
+
       </table>
+      <%= paginate @users %>
     </div>
   </div>
