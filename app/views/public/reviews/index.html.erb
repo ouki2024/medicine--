@@ -62,8 +62,9 @@
                 </td>
                 <td><%= review.review_comments.count %></td>
             <% end %>
-            <%= paginate @reviews %>
+
             </tr>
+            <%= paginate @reviews %>
         </tbody>
     </table>
 

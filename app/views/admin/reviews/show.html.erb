@@ -1,10 +1,10 @@
-<h1>レビュー詳細ページ</h1>
+<h2>レビュー詳細ページ</h2>
 
-<h1>投稿詳細</h1>
 
 
 
         <div>
+
             <p>ユーザー：<%= @review.nickname %></p>
             <p>性別：<%= @review.gender %></p>
             <p>年代：<%= @review.age %></p>
@@ -21,15 +21,15 @@
         <% end %>
 
         </div>
-        <% if @review.user_id == current_user.id %>
-            <%= link_to '編集', edit_review_path(@review) %>
+
+
+
+            <%= link_to '削除', admin_review_path(@review), method: :delete, data: {confirm: "本当に消しますか？"} %>
             |
-            <%= link_to '削除', review_path(@review), method: :delete, data: {confirm: "本当に消しますか？"} %>
-        <% else %>
-            <%= link_to '投稿一覧', reviews_path %>
-            ｜
-            <%= link_to 'トップページ', root_path %>
-        <% end %>
+            <%= link_to '投稿一覧', admin_reviews_path %>
+
+
+
 
 
         <div>
@@ -41,17 +41,16 @@
                 <!--<%= review_comment.created_at.strftime('%Y/%m/%d') %><br>-->
                 <%= review_comment.comment %>
 
-                <% if review_comment.user == current_user %>
-                  <%= link_to "コメント削除", review_review_comment_path(review_comment.review, review_comment), method: :delete %>
-                <% end %>
+
+
+
 
             <% end %>
-        </div>
+        <!--</div>-->
         <!--#コメント欄-->
-        <div>
-            <%= form_with model: [@review, @review_comment] do |f| %>
-                <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-                <%= f.submit "送信する" %>
-            <% end %>
-        </div>
-
+        <!--<div>-->
+        <!--    <%#= form_with model: [@review, @review_comment] do |f| %>-->
+        <!--        <%#= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>-->
+        <!--        <%#= f.submit "送信する" %>-->
+        <!--    <%# end %>-->
+        <!--</div>-->

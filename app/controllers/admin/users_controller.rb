@@ -17,9 +17,7 @@ class Admin::UsersController < ApplicationController
     @review = Review.new
 
   end
-  def edit
-    @user = User.find(params[:id])
-  end
+
 
   def destroy
     @user = User.find(params[:id])

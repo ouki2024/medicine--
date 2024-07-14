@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'reviews/index'
+    get 'reviews/show'
+  end
 #管理者
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: 'admin/sessions'
@@ -7,6 +11,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'users', to: 'users#index'
     resources :users, only: [:index, :show, :edit, :destroy]
+    resources :reviews, only: [:index, :show, :destroy]
   end
 
 

@@ -46,12 +46,10 @@
                 </td>
                 <td>
 
-                  <%= link_to '編集', edit_review_path(review) %>
-                    |
-                  <%= link_to '削除', review_path(review), method: :delete, data: {confirm: "本当に消しますか？"} %>
 
-                    |
-                  <%= link_to 'レビュー詳細', review_path(review) %>
+                  <%= link_to '削除', admin_review_path(review), method: :delete, data: {confirm: "本当に消しますか？"} %>
+                  |
+                  <%= link_to 'レビュー詳細', admin_review_path(review) %>
                 </td>
             </tr>
             <% end %>

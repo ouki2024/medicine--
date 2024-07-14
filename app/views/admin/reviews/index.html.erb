@@ -1,0 +1,38 @@
+
+
+
+<div class="container">
+  <div class="row">
+    <h2>投稿一覧</h2>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>レビューID</th>
+          <th>ニックネーム</th>
+          <th>都道府県</th>
+          <th>病院/診療科</th>
+          <th>リンク先</th>
+          <th></th>
+        </tr>
+      </thead>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td><%= review.id %></td>
+            <td>
+              <%= image_tag review.user.get_profile_image(70,70) %><br>
+              <%= review.nickname %>
+            </td>
+            <td><%= review.address %></td>
+            <td><%= review.hospital %><br>
+                <%= review.clinical_department %>
+            </td>
+            <td><%= link_to 'レビュー詳細ページへ', admin_review_path(review) %></td>
+            <td><%= link_to '削除', admin_review_path(review), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+          </tr>
+        <% end %>
+
+      </table>
+      <%= paginate @reviews %>
+    </div>
+  </div>
