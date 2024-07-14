@@ -26,7 +26,7 @@ class Admin::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    root_path # ログアウト後にリダイレクトするパス
+    new_admin_session_path # ログアウト後にリダイレクトするパス
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
