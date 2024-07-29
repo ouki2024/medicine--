@@ -1,4 +1,10 @@
-<h2>投稿一覧</h2>
+
+
+<div class="container">
+    <h2>投稿一覧</h2>
+    <div class="row">
+
+
 <!--<p>Find me in app/views/reviews/index.html.erb</p>-->
 
     <%= form_with url: reviews_path, method: :get, class: '自由に' do %>
@@ -67,5 +73,7 @@
             <%= paginate @reviews %>
         </tbody>
     </table>
+    </div>
+</div>
 
 
