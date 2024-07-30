@@ -38,9 +38,6 @@
                   <li class="nav-item">
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
                   </li>
-
-
-
               <% else %>
                   <li class="nav-item">
                     <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-light' %>
@@ -49,27 +46,26 @@
                     <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
                   </li>
               <% end %>
-
-
             </ul>
           </div>
         </div>
       </nav>
     </header>
+
     <main>
       <% flash.each do |message_type, message| %>
        <div class="flash-message <%= message_type %>"><%= message %></div>
       <% end %>
-
     </main>
 
     <%= yield %>
     <footer class="bg-dark text-white">
       <div class ="container mt-5">
         <div class="row no-gutters">
-        <div class ="row">
-          <div class ="mx-auto">
-            <p>medicine-最適なお薬受け取り方法</p>
+          <div class ="row">
+            <div class ="mx-auto">
+              <p>medicine-最適なお薬受け取り方法</p>
+            </div>
           </div>
         </div>
       </div>
