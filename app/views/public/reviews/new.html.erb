@@ -1,69 +1,79 @@
 <div class="container">
     <div class = "row">
-        <div class = "mx-auto">
+        <div class = "mx-auto w-100">
 
-            <h2>投稿フォーム</h2>
-            <div class="row">
+            <h2 class="text-center">投稿フォーム</h2>
+            <div class=" justify-content-center row w-100">
 
-<!--<p>Find me in app/views/reviews/new.html.erb</p>-->
-
-
+            <div class="col-7">
             <%= form_with model: @review do |f| %>
-                <div class="form-nickname row">
-                    <%= f.label :ニックネーム %>
-                    <%= f.text_field :nickname %>
+                <div class="form-group form-nickname mt-2 row">
+
+                    <%= f.label :ニックネーム, {for: "review_nickname"} %>
+                    <%= f.text_field :nickname, class: "form-control",\
+                    placeholder: "登録したニックネームをお願いします。" %>
                 </div>
 
-                <div class="form-gender row">
-                    <%= f.label :性別 %>
-                    <%= f.text_field :gender %>
+                <div class="form-group form-gender mt-2 row">
+                    <%= f.label :性別, {for: "review_gender"} %>
+                    <%= f.text_field :gender, class: "form-control",\
+                    placeholder: "男性 or 女性 or その他" %>
                 </div>
 
-                <div class="form-age row">
-                    <%= f.label :年代 %>
-                    <%= f.text_field :age %>代
+                <div class="form-group form-age mt-2 row">
+                    <%= f.label :年代, {for: "review_age"} %>
+                    <%= f.text_field :age, class: "form-control",\
+                    placeholder: "○代" %>
                 </div>
-                <div class="form-address row">
-                    <%= f.label :住所 %>
-                    <%= f.text_area :address %>
+                <div class="form-group form-address mt-2 row">
+                    <%= f.label :住所, {for: "review_address"} %>
+                    <%= f.text_area :address, class: "form-control",\
+                    placeholder: "○○県○○市〜" %>
                 </div>
-                <div class="form-hospital row">
-                    <%= f.label :病院 %>
-                    <%= f.text_field :hospital %>病院
+                <div class="form-group form-hospital mt-2 row">
+                    <%= f.label :病院, {for: "review_hospital"} %>
+                    <%= f.text_field :hospital, class: "form-control",\
+                    placeholder: "○○病院 or ○○クリニック" %>
                 </div>
-                <div class="form-clinical_department row">
-                    <%= f.label :診療科 %>
-                    <%= f.text_field :clinical_department %>科
+                <div class="form-group form-clinical_department mt-2 row">
+                    <%= f.label :診療科, {for: "review_clinical_department"} %>
+                    <%= f.text_field :clinical_department, class: "form-control",\
+                    placeholder: "○○科" %>
                 </div>
-                <div class="form-pharmacy row">
-                    <%= f.label :お薬受け取り場所 %>
-                    <%= f.text_field :pharmacy %>
+                <div class="form-group form-pharmacy mt-2 row">
+                    <%= f.label :お薬受け取り場所, {for: "review_pharmacy"} %>
+                    <%= f.text_field :pharmacy, class: "form-control",\
+                    placeholder: "○○薬局 or 院内処方" %>
                 </div>
-                <div class="form-use_count row">
-                    <%= f.label :訪問回数 %>
-                    <%= f.text_field :use_count %>
+                <div class="form-group form-use_count mt-2 row">
+                    <%= f.label :訪問回数, {for: "review_use_count"} %>
+                    <%= f.text_field :use_count, class: "form-control",\
+                    placeholder: "○回目" %>
                 </div>
-                <div class="form-visit_month row">
-                <%= f.label :来訪月 %>
-                <%= f.text_field :visit_month %>月
+                <div class="form-group form-visit_month mt-2 row">
+                    <%= f.label :来訪月, {for: "review_visit_month"} %>
+                    <%= f.text_field :visit_month, class: "form-control",\
+                    placeholder: "○月" %>
                 </div>
-                <div class="form-content row">
-                    <%= f.label :感想 %>
-                    <%= f.text_area :content %>
+                <div class="form-group form-content mt-2 row">
+                    <%= f.label :感想, {for: "review_content"} %>
+                    <%= f.text_area :content, class: "form-control",\
+                    placeholder: "５文字以上の感想文をお待ちしています。" %>
                 </div>
 
 
+                <div class="form-group form-tag mt-3 row">
+                    <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
+                    placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
+                </div>
 
-                <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
-                placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
 
-
-
-                <div class="actions row">
+                <div class="actions row mt-3 mb-3">
                     <%= f.submit '投稿' %>
                 </div>
 
             <% end %>
+            </div>
             </div>
         </div>
     </div>
