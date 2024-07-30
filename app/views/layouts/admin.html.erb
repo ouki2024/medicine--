@@ -1,54 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Admin - Meshiterro</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
-<body>
-  <header>
-    <nav class ="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class ="container">
-        <% if admin_signed_in? %>
-          <a class="navbar-brand" href='/admin/users'>
-            Medicine
-          </a>
-        <% else %>
-          <a class="navbar-brand" href='/'>
-            Medicine
-          </a>
-        <% end %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <head>
+    <title>Admin - Medicine</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <header>
+      <nav class ="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class ="container">
+          <% if admin_signed_in? %>
+            <a class="navbar-brand" href='/admin/users'>
+              Medicine
+            </a>
+          <% else %>
+            <a class="navbar-brand" href='/'>
+              Medicine
+            </a>
+          <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <div class=“collapse navbar-collapse” id=“Dropdown”>
-          <ul class="navbar-nav ml-auto">
-            <% if admin_signed_in? %>
-              <div class="nav-item">
-                <%= link_to '会員一覧', admin_users_path, class: 'nav-link text-light' %>
-              </div>
-              <div class="nav-item">
-                <%= link_to '投稿一覧', admin_reviews_path, class: 'nav-link text-light' %>
-              </div>
+          <div class=“collapse navbar-collapse” id=“Dropdown”>
+            <ul class="navbar-nav ml-auto">
+              <% if admin_signed_in? %>
+                <div class="nav-item">
+                  <%= link_to '会員一覧', admin_users_path, class: 'nav-link text-light' %>
+                </div>
+                <div class="nav-item">
+                  <%= link_to '投稿一覧', admin_reviews_path, class: 'nav-link text-light' %>
+                </div>
 
-              <div class="nav-item">
-                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
-              </div>
+                <div class="nav-item">
+                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+                </div>
 
-            <% end %>
-          </ul>
+              <% end %>
+            </ul>
+          </div>
         </div>
+      </nav>
+
+    </header>
+    <main>
+    </main>
+
+    <div class="set-flex-grow">
+      <%= yield %>
+    </div>
+
+    <footer class="bg-dark text-white set-footer">
+      <div class ="container">
+          <div class ="row">
+            <div class ="mx-auto">
+              <p>medicine-最適なお薬受け取り方法</p>
+            </div>
+          </div>
       </div>
-    </nav>
-
-  </header>
-  <main>
-
-  </main>
-
-  <%= yield %>
-</body>
+    </footer>
+  </body>
 </html>
