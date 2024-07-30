@@ -12,7 +12,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="set-body">
     <header>
       <nav class ="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class ="container">
@@ -58,9 +58,12 @@
       <% end %>
     </main>
 
-    <%= yield %>
-    <footer class="bg-dark text-white">
-      <div class ="container mt-md-5">
+    <div class="set-flex-grow">
+      <%= yield %>
+    </div>
+    
+    <footer class="bg-dark text-white set-footer">
+      <div class ="container">
           <div class ="row">
             <div class ="mx-auto">
               <p>medicine-最適なお薬受け取り方法</p>
