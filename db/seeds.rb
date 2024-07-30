@@ -15,19 +15,19 @@ users_params = [
       id: 1,
       email: "test1@test.com",
       password: "password",
-      nickname: "test1"
+      nickname: "akiyama"
     },
     {
       id: 2,
       email: "test2@test.com",
       password: "password",
-      nickname: "test2"
+      nickname: "haru"
     },
     {
       id: 3,
       email: "test3@test.com",
       password: "password",
-      nickname: "test3"
+      nickname: "itigo"
     },
   ]
 
