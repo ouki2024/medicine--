@@ -37,6 +37,9 @@ https://docs.google.com/spreadsheets/d/1Wxg7BBc7KQ9VwYtzCatAaxfndIjfigaOsk2zb4-s
 
 ## 実装機能リスト
 https://docs.google.com/spreadsheets/d/1F7zCRs98nxi1MegSJx0_DF7qI5ymQJEIh4Q0h5GJBKU/edit#gid=1091086188
+
+## 使用素材
+DMM WEBCAMPの講座でダウンロードした写真を使用
 ​
 ## 開発環境
 - OS：Linux(CentOS)
