@@ -22,7 +22,18 @@
 
 ## 設計書
 
-##### 後ほど作成予定
+##### WBS
+https://docs.google.com/spreadsheets/d/1DlyU-Hv71y-IiobHcrxE-IlUIiK8-MN2agQnFBmFG4k/edit?usp=sharing
+##### ER図
+https://drive.google.com/file/d/1ED8yoXiOURwNxJIhRo9w3r9myqD6F1-a/view?usp=sharing
+##### テーブル定義書・詳細設計書
+https://docs.google.com/spreadsheets/d/1dYkKxm5eWw02Hj3lJ4hu7MkrkOq8zTi_QLZQlKeylPs/edit?usp=sharing
+##### medicine_テスト仕様書
+https://docs.google.com/spreadsheets/d/15wHmUnSPUvQXYjB3tB89Gi7yQ09THNQx/edit?usp=sharing&ouid=112825694824458704183&rtpof=true&sd=true
+##### AWS構成図
+https://drive.google.com/drive/my-drive
+##### AWSインフラ設計書
+https://docs.google.com/spreadsheets/d/1Wxg7BBc7KQ9VwYtzCatAaxfndIjfigaOsk2zb4-sC2c/edit?gid=0#gid=0
 
 ## 実装機能リスト
 https://docs.google.com/spreadsheets/d/1F7zCRs98nxi1MegSJx0_DF7qI5ymQJEIh4Q0h5GJBKU/edit#gid=1091086188
